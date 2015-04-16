@@ -1,0 +1,25 @@
+{
+    "name": "elegant/elegant",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "'wangyusong'",
+            "email": "admin@wangyusong.com"
+        }
+    ],
+    "require": {
+
+    	"klein/klein":"*"
+
+    },
+
+    "autoload":{
+
+    	"psr-4":{
+    		
+                "Elegant\\": "Elegant/src",
+                "App\\": "App/"
+
+            }
+    } 
+}
