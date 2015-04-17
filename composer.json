@@ -1,6 +1,9 @@
 {
     "name": "elegant/elegant",
+    "description": "elegant Framework",
+    "keywords": ["elegant", "Framework", "Framework"],
     "license": "mit",
+    "type": "project",
     "authors": [
         {
             "name": "'wangyusong'",
@@ -8,18 +11,20 @@
         }
     ],
     "require": {
-
-    	"klein/klein":"*"
-
+        "php": ">=5.4.0",
+        "illuminate/database": "*",
+    	"klein/klein":"*",
+        "league/monga":"*",
+    	"filp/whoops": "*",
+    	"desarrolla2/cache": "dev-master"
+    	
     },
 
     "autoload":{
-
+    
     	"psr-4":{
-    		
                 "Elegant\\": "Elegant/src",
                 "App\\": "App/"
-
             }
     } 
 }

@@ -5,6 +5,7 @@ class Route extends Klein{
 
 	public function __construct(){
 		parent::__construct();
+		
 	}
 
 
