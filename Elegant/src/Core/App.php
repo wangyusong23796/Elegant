@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Capsule\Manager as database;
 use Elegant\Helper\Helper;
-
+use Phly\Http\Server;
 class App{
 
 
 	protected $Route;
+	protected $server;
 	static $classMap;
-
-
+	static $Middleware;
 	function __construct(){
 		//TODO 构造其他方法.
 		$this->Route = new \Elegant\Route\Route();
@@ -24,7 +24,10 @@ class App{
 			self::$classMap = include(APP_PATH.'/Config/autoload.php');
 			spl_autoload_register([$this,"Regautoload"], true, true);
 		}
+		if(Helper::config('middleware')==true)
+			$this->RegMiddleware();
 
+		\duncan3dc\Helpers\Env::usePath(ROOT_PATH);
 	}
 
 
@@ -37,6 +40,8 @@ class App{
 
 		//将Route改变别名..引用
 		$Route = & $this->Route;
+		$Mid = & self::$Middleware;
+
 
 		include APP_PATH.'/Config/Routes.php';
 
@@ -48,8 +53,9 @@ class App{
 	{
 		// TODO 读取当前Route并display
 		//TODO 读取钩子.
-		
-		
+		//读取中间件
+		if(!empty($this->server))
+			$this->server->listen();
 
 		$this->Route->dispatch();
 		//TODO 读取控制器之后的钩子.
@@ -103,6 +109,21 @@ class App{
 		}
 	}
 
+	public function RegMiddleware()
+	{
+		//开启中间件
+
+		self::$Middleware = new \Elegant\Middleware\Middleware;
+		$this->server = Server::createServer(self::$Middleware,
+		  $_SERVER,
+		  $_GET,
+		  $_POST,
+		  $_COOKIE,
+		  $_FILES
+		);
+
+
+	}
 
 
 }

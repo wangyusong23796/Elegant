@@ -1,8 +1,15 @@
 <?php
 
 
+$Mid->pipe('/', function ($req, $res, $next) {
+	if ($req->getUri()->getPath() !== '/') {
+	    return $next($req, $res);
+	}
+    return $res->end('Hello world!');
+});
+
 $Route->get('/',function(){
-	
+
 	//new test();
 	die('hi');
 });

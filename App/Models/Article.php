@@ -1,4 +1,4 @@
-<?php namespace App\Model;
+<?php namespace App\Models;
 
 use Elegant\Model\Model;
 

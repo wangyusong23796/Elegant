@@ -18,7 +18,9 @@
     	"filp/whoops": "*",
     	"desarrolla2/cache": "dev-master",
     	"symfony/debug": "*",
-    	"symfony/filesystem": "*"
+    	"symfony/filesystem": "*",
+        "phly/conduit":"*",
+        "duncan3dc/blade": "*"
     	
     },
 

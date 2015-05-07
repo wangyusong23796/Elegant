@@ -3,7 +3,8 @@
 return
 [
 	'debug' => true,
-	'autoload'=>0,
+	'autoload'=>true,
+	'middleware'=>true,
 ];
 
 

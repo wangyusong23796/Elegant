@@ -2,7 +2,6 @@
 
 use Desarrolla2\Cache\Cache as Desarrolla;
 use Desarrolla2\Cache\Adapter\NotCache;
-use Desarrolla2\Cache\Adapter\File;
 use Desarrolla2\Cache\Adapter\Apc;
 use Desarrolla2\Cache\Adapter\Memory;
 use Desarrolla2\Cache\Adapter\Mongo;
@@ -14,7 +13,7 @@ use Desarrolla2\Cache\Adapter\MemCache;
 
 class Cache{
 	
-	public static $che = NULL;
+	static $che = NULL;
 	/**
 	*  运行cache 写入配置.
 	* @date: 2015-4-17
@@ -26,10 +25,10 @@ class Cache{
 	{
 		switch ($model){
 			case 'File':
-				$file =new File($name);
-			
+				if($name == NULL)
+					$name=ROOT_PATH."/Cache/datas";
+				$file =new \Desarrolla2\Cache\Adapter\File($name);
 				$file->setOption('ttl', 3600);
-				
 				self::$che = new Desarrolla($file);
 				break;
 		}
