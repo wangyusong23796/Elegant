@@ -8,7 +8,7 @@ use Elegant\View\View;
 
 
 $this->respond('GET', '/index', function ($request, $response) {
-	
+
         echo 'index';
 });
 

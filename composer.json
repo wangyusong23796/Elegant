@@ -19,13 +19,11 @@
     	"desarrolla2/cache": "dev-master",
     	"symfony/debug": "*",
     	"symfony/filesystem": "*",
-        "phly/conduit":"*",
         "duncan3dc/blade": "*"
     	
     },
 
     "autoload":{
-    
     	"psr-4":{
                 "Elegant\\": "Elegant/src",
                 "App\\": "App/"

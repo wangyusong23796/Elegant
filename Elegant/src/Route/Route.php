@@ -1,15 +1,19 @@
 <?php  namespace Elegant\Route;
-use Klein\Klein;
 
-class Route extends Klein{
+
+
+class Route extends \Klein\Klein{
 
 	public function __construct(){
-
 		parent::__construct();
-		
 	}
 
 
+	public function middleware($middleware)
+	{
+		$class = new $middleware();
 
+		$class->call(new \Klein\Request());
+	}
 
 }

@@ -1,14 +1,10 @@
 <?php
 
 
-// $Mid->pipe('/', function ($req, $res, $next) {
-// 	if ($req->getUri()->getPath() !== '/') {
-// 	    return $next($req, $res);
-// 	}
-//     return $res->end('Hello world!');
-// });
+$Route->middleware("\App\Middleware\Cson");
 
-$Route->get('/',function(){
+$Route->get('/',function($request, $response, $service, $app){
+
 
 	//new test();
 	die('hi');

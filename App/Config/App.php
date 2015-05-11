@@ -2,9 +2,10 @@
 
 return
 [
-	'debug' => 0,
-	'autoload'=>0,
-	'middleware'=>true, //TODO 换一个中间件 这个太垃圾.
+	'debug' => 1,
+	'autoload'=>1,
+	'view'=>1,
+	'middleware'=>0, //TODO 换一个中间件 这个太垃圾.
 ];
 
 
