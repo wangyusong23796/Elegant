@@ -11,7 +11,10 @@ $this->respond('GET', '/index', function ($request, $response) {
 
         echo 'index';
 });
+$this->respond('POST', '/index', function ($request, $response) {
 
+     echo "ok";
+});
 
 $this->respond('GET', '/say', function ($request, $response, $service, $app){
 

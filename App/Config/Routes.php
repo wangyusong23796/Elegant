@@ -1,13 +1,20 @@
 <?php
 
 
-$Route->middleware("\App\Middleware\Cson");
+
+
 
 $Route->get('/',function($request, $response, $service, $app){
 
 
-	//new test();
-	die('hi');
+
+	return Elegant\View\View::make('index');
+});
+$Route->post('/',function($request, $response, $service, $app){
+
+
+	
+	
 });
 
 
@@ -18,6 +25,3 @@ foreach(['projects'] as $controller) {
 };
 
 
-$Route->onHttpError(function(){
-	 	throw new Exception("路由无匹配项 404 Not Found");
-});

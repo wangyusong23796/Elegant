@@ -13,13 +13,16 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/database": "*",
+
     	"klein/klein":"*",
         "league/monga":"*",
     	"filp/whoops": "*",
     	"desarrolla2/cache": "dev-master",
     	"symfony/debug": "*",
     	"symfony/filesystem": "*",
-        "duncan3dc/blade": "*"
+        "duncan3dc/blade": "*",
+        "volnix/csrf": "~1.0",
+        "symfony/http-foundation": "3.0.*@dev"
     	
     },
 

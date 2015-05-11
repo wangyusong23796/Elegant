@@ -12,6 +12,8 @@ class App{
 	static $Middleware;
 	function __construct(){
 		//TODO 构造其他方法.
+		//判断是否存在缓存
+		$this->Route->cache();
 		$this->Route = new \Elegant\Route\Route();
 
 
@@ -24,11 +26,14 @@ class App{
 		if(Helper::config('autoload')==true){
 			self::$classMap = include(APP_PATH.'/Config/autoload.php');
 			self::$classMap = include(APP_PATH.'/Config/Middleware.php');
+
 			spl_autoload_register([$this,"Regautoload"], true, true);
 		}
-		//注册中间件
-		if(Helper::config('middleware')==true)
-			$this->RegMiddleware();
+		//注册自动加载中间件
+		 if(Helper::config('automiddleware')==true)
+		 	$this->RegMiddleware();
+
+		
 		//注册视图路径
 		if(Helper::config('view')==true)
 			\duncan3dc\Helpers\Env::usePath(ROOT_PATH);
@@ -46,8 +51,12 @@ class App{
 		//将Route改变别名..引用
 		$Route = & $this->Route;
 
-		//        self::$Middleware->add(new \Slim\Middleware\ContentNegotiation());
+
 		include APP_PATH.'/Config/Routes.php';
+
+		$Route->onHttpError(function(){
+	 		throw new \Exception("路由无匹配项 404 Not Found");
+		});
 
 	}
 
@@ -57,11 +66,16 @@ class App{
 	{
 		// TODO 读取当前Route并display
 		//TODO 读取钩子.
-		//读取中间件
-		if(!empty(self::$Middleware))
-			self::$Middleware->run();
-		$this->Route->dispatch();
+		//TODO 判断页面是否已经缓存.
+		//TODO 缓存则显示缓存不然pispathc
+
+		$this->Route->Dispatch();
+
+		// ob_get_contents(),flush()或ob_flush()
 		//TODO 读取控制器之后的钩子.
+		//将缓冲区保存为文件
+
+		
 	}
 
 
@@ -111,11 +125,19 @@ class App{
 		}
 	}
 
+	//自动加载中间件
 	public function RegMiddleware()
 	{
 		//开启中间件
 
-      	
+		@session_start();
+		$middleware = Helper::config(NULL,'automiddleware');
+		foreach ($middleware as $key) {
+			# code...
+			$this->Route->middleware($key);
+		}
+
+		
 	}
 
 	//TODO 注册其他视图的实现
