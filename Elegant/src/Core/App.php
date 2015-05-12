@@ -13,29 +13,32 @@ class App{
 	function __construct(){
 		//TODO 构造其他方法.
 		//判断是否存在缓存
-		$this->Route->cache();
+
 		$this->Route = new \Elegant\Route\Route();
 
+		//TODO 缓存
+		//$this->Route->cache();
 
 		//TODO 优化配置只取一次.
+		$config = Helper::config(NULL,"App");
 		
 		//根据配置文件判断是否开启调试
-		if(Helper::config('debug')==true)
+		if($config['debug']==true)
 			self::RegViewError();
 		//注册自动加载类
-		if(Helper::config('autoload')==true){
+		if($config['autoload']==true){
 			self::$classMap = include(APP_PATH.'/Config/autoload.php');
 			self::$classMap = include(APP_PATH.'/Config/Middleware.php');
 
 			spl_autoload_register([$this,"Regautoload"], true, true);
 		}
 		//注册自动加载中间件
-		 if(Helper::config('automiddleware')==true)
+		 if($config['automiddleware']==true)
 		 	$this->RegMiddleware();
 
 		
 		//注册视图路径
-		if(Helper::config('view')==true)
+		if($config['view']==true)
 			\duncan3dc\Helpers\Env::usePath(ROOT_PATH);
 		
 	}
@@ -69,7 +72,7 @@ class App{
 		//TODO 判断页面是否已经缓存.
 		//TODO 缓存则显示缓存不然pispathc
 
-		$this->Route->Dispatch();
+		$this->Route->dispatch();
 
 		// ob_get_contents(),flush()或ob_flush()
 		//TODO 读取控制器之后的钩子.

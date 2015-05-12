@@ -16,7 +16,8 @@ class Route extends \Klein\Klein{
 		$class->call();
 	}
 
-	public function Dispatch()
+
+	public function DispatchRoute()
 	{
 		$request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 		//TODO 判断是否开启缓存
