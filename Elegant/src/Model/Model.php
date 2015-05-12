@@ -1,4 +1,4 @@
-<?php namespace Elegant\Model;
+<?php namespace Eg\Model;
 
 use Illuminate\Database\Eloquent\Model as Orm_Model;
 

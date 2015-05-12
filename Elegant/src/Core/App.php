@@ -1,7 +1,7 @@
-<?php  namespace Elegant\Core;
+<?php  namespace Eg\Core;
 
 use Illuminate\Database\Capsule\Manager as database;
-use Elegant\Helper\Helper;
+use Eg\Helper\Helper;
 use Phly\Http\Server;
 class App{
 
@@ -14,7 +14,7 @@ class App{
 		//TODO 构造其他方法.
 		//判断是否存在缓存
 
-		$this->Route = new \Elegant\Route\Route();
+		$this->Route = new \Eg\Route\Route();
 
 		//TODO 缓存
 		//$this->Route->cache();

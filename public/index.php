@@ -11,7 +11,7 @@ define("APP_PATH",ROOT_PATH.'/App/');
 
 require_once ROOT_PATH . '/vendor/autoload.php';
 
-$App = new \Elegant\Core\App();
+$App = new \Eg\Core\App();
 
 $App->Run();
 

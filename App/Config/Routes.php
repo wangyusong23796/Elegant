@@ -8,7 +8,7 @@ $Route->get('/',function($request, $response, $service, $app){
 
 
 
-	return Elegant\View\View::make('index');
+	return Eg\View\View::make('index');
 });
 $Route->post('/',function($request, $response, $service, $app){
 

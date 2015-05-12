@@ -1,7 +1,7 @@
 <?php namespace App\Middleware;
 
 
-class Csrf extends \Elegant\Middleware\Middleware
+class Csrf extends \Eg\Middleware\Middleware
 {
 
     // private $negotiator;
@@ -18,7 +18,7 @@ class Csrf extends \Elegant\Middleware\Middleware
         //var_dump($this->Request->request->all());
         if($this->Request->request->count() > 0)
         {
-            if (\Elegant\Middleware\CSRF::validate($this->Request->request->all())) {
+            if (\Eg\Middleware\CSRF::validate($this->Request->request->all())) {
                 // good token
                     
             } else {

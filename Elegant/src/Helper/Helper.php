@@ -1,4 +1,4 @@
-<?php namespace Elegant\Helper;
+<?php namespace Eg\Helper;
 
 class Helper{
 	

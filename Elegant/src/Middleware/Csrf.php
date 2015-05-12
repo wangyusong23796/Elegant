@@ -1,4 +1,4 @@
-<?php namespace Elegant\Middleware;
+<?php namespace Eg\Middleware;
 
 
 class Csrf extends \Volnix\CSRF\CSRF

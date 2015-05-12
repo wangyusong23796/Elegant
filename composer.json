@@ -1,5 +1,5 @@
 {
-    "name": "elegant/elegant",
+    "name": "elegant/framework",
     "description": "elegant Framework",
     "keywords": ["elegant", "Framework", "Framework"],
     "license": "mit",
@@ -28,7 +28,7 @@
 
     "autoload":{
     	"psr-4":{
-                "Elegant\\": "Elegant/src",
+                "Eg\\": "Elegant/src",
                 "App\\": "App/"
             }
     } 

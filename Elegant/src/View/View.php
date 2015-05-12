@@ -1,4 +1,4 @@
-<?php namespace Elegant\View;
+<?php namespace Eg\View;
 
 use duncan3dc\Laravel\Blade;
 
@@ -20,7 +20,7 @@ class View extends Blade
     protected static function getInstance()
     {
         if (!static::$instance) {
-            static::$instance = new \Elegant\View\BladeInstance();
+            static::$instance = new \Eg\View\BladeInstance();
         }
 
         return static::$instance;

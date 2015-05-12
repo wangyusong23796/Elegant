@@ -1,4 +1,4 @@
-<?php namespace Elegant\Cache;
+<?php namespace Eg\Cache;
 
 use Desarrolla2\Cache\Cache as Desarrolla;
 use Desarrolla2\Cache\Adapter\NotCache;

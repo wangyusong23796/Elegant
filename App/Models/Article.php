@@ -1,6 +1,6 @@
 <?php namespace App\Models;
 
-use Elegant\Model\Model;
+use Eg\Model\Model;
 
 class Article extends Model
 {

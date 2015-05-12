@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\Article;
-use Elegant\Model\DB;
-use Elegant\Cache\Cache;
-use Elegant\Core\App;
-use Elegant\View\View;
+use Eg\Model\DB;
+use Eg\Cache\Cache;
+use Eg\Core\App;
+use Eg\View\View;
 
 
 $this->respond('GET', '/index', function ($request, $response) {

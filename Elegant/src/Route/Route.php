@@ -1,4 +1,4 @@
-<?php  namespace Elegant\Route;
+<?php  namespace Eg\Route;
 
 
 

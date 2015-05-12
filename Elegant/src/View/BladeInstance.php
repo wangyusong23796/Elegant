@@ -1,4 +1,4 @@
-<?php namespace Elegant\View;
+<?php namespace Eg\View;
 
 use duncan3dc\Laravel\Blade;
 use duncan3dc\Laravel\BladeInstance as BladeInstanceOld;
