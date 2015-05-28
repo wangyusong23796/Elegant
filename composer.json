@@ -16,7 +16,9 @@
     	"klein/klein":"*",
         "league/monga":"*",
     	"filp/whoops": "*",
-    	"desarrolla2/cache": "dev-master"
+    	"desarrolla2/cache": "dev-master",
+    	"symfony/debug": "*",
+    	"symfony/filesystem": "*"
     	
     },
 

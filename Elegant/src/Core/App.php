@@ -27,9 +27,9 @@ class App{
 		$capsule->bootEloquent();
 		$capsule->setAsGlobal();
 		
-		$this->Route->onHttpError(function(){
-// 			throw new Exception("路由无匹配项 404 Not Found");
-		});
+// 		$this->Route->onHttpError(function(){
+// // 			throw new Exception("路由无匹配项 404 Not Found");
+// 		});
 		//TODO 读取控制器之前的钩子
 	}
 
