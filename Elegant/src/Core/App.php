@@ -1,36 +1,30 @@
 <?php  namespace Elegant\Core;
 
 use Illuminate\Database\Capsule\Manager as database;
-
+use Elegant\Helper\Helper;
 
 class App{
 
 
 	protected $Route;
-
+	static $classMap;
 
 
 	function __construct(){
 		//TODO 构造其他方法.
 		$this->Route = new \Elegant\Route\Route();
+
+
+
 		
-		//注册构造函数
-		//TODO 判断是否是调试模式.调试模式注册异常类
-		$whoops = new \Whoops\Run;
-		$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-		$whoops->register();
-		
-		//TODO 读取公共配置文件目录及目录名称
-		
-		$capsule = new database;
-		$capsule->addConnection(require APP_PATH.'/Config/Database.php');
-		$capsule->bootEloquent();
-		$capsule->setAsGlobal();
-		
-// 		$this->Route->onHttpError(function(){
-// // 			throw new Exception("路由无匹配项 404 Not Found");
-// 		});
-		//TODO 读取控制器之前的钩子
+		//根据配置文件判断是否开启调试
+		if(Helper::config('debug')==true)
+			self::RegViewError();
+		if(Helper::config('autoload')==true){
+			self::$classMap = include(APP_PATH.'/Config/autoload.php');
+			spl_autoload_register([$this,"Regautoload"], true, true);
+		}
+
 	}
 
 
@@ -45,8 +39,6 @@ class App{
 		$Route = & $this->Route;
 
 		include APP_PATH.'/Config/Routes.php';
-		
-		
 
 	}
 
@@ -62,6 +54,57 @@ class App{
 		$this->Route->dispatch();
 		//TODO 读取控制器之后的钩子.
 	}
+
+
+
+	public static function RegDb($configpath=NULL)
+	{
+		$path = '';
+		if($configpath == NULL)
+		{
+			$path = APP_PATH.'/Config/Database.php';
+		}else{
+			$path = ROOT_PATH.$configpath;
+		}
+		 $capsule = new database;
+		 $capsule->addConnection(require $path);
+		 $capsule->bootEloquent();
+		 $capsule->setAsGlobal();
+	}
+
+
+
+
+	public static function RegViewError()
+	{
+		//注册构造函数
+		//TODO 判断是否是调试模式.调试模式注册异常类
+		$whoops = new \Whoops\Run;
+		$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+		$whoops->register();
+	}
+
+
+
+	public function Regautoload($className)
+	{
+
+		if (isset(static::$classMap[$className])){
+			$classFile = static::$classMap[$className];
+		}else{
+			return;
+		}
+
+		include($classFile);
+		if (YII_DEBUG && !class_exists($className, false) &&
+			!interface_exists($className, false) && !trait_exists($className,
+			false)) {
+			throw new UnknownClassException("Unable to find '$className' in file: $classFile. Namespace missing?");
+		}
+	}
+
+
+
 }
 
 

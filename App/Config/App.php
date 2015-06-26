@@ -2,15 +2,8 @@
 
 return
 [
-'load' =>[
-	
-],
-'db' => '',
-
-
-
-
-
+	'debug' => true,
+	'autoload'=>0,
 ];
 
 

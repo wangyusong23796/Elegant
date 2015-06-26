@@ -3,6 +3,7 @@
 
 $Route->get('/',function(){
 	
+	//new test();
 	die('hi');
 });
 
